@@ -1,5 +1,7 @@
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
+import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 
 const DutiDetails = () => {
 
@@ -13,13 +15,28 @@ const DutiDetails = () => {
               return data;
             },
           });
-          console.log(products);
+        
+
+          const handleDelete = (id) => {
+            console.log(id);
+            fetch(`http://localhost:5000/merchant-duty-details/${id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.deletedCount > 0) {
+               toast.success("Success Deleted", {
+                 position: toast.POSITION.TOP_CENTER,
+               });
+                  refetch();
+                }
+              });
+          };
 
     return (
       <div>
         <div className="w-[80%] mx-auto">
           <h1 className="text-2xl font-bold my-10">All Duty Details</h1>
-
           <div className="lg:w-2/2 w-full mx-auto overflow-auto">
             <table className="table w-full whitespace-no-wrap">
               <thead>
@@ -57,7 +74,7 @@ const DutiDetails = () => {
 
                     <td>
                       <button
-                        // onClick={() => handleDelete(product?._id)}
+                        onClick={() => handleDelete(product?._id)}
                         className="btn btn-sm"
                       >
                         Delete
@@ -69,6 +86,7 @@ const DutiDetails = () => {
             </table>
           </div>
         </div>
+        <ToastContainer />
       </div>
     );
 };

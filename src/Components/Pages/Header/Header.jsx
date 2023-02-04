@@ -48,7 +48,7 @@ const Header = () => {
               {menuItems}
               <li tabIndex={0}>
                 <a className="justify-between">
-                  Parent
+                 Services
                   <svg
                     className="fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,15 +61,14 @@ const Header = () => {
                 </a>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <a>airport</a>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <a>pick and drop</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
               </li>
             </ul>
           </div>
@@ -83,7 +82,7 @@ const Header = () => {
             {menuItems}
             <li tabIndex={0}>
               <a>
-                Parent
+                Services
                 <svg
                   className="fill-current"
                   xmlns="http://www.w3.org/2000/svg"
@@ -96,21 +95,21 @@ const Header = () => {
               </a>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>airport</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Pick and drop</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Blog</a>
             </li>
           </ul>
         </div>
 
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <button className='btn btn-primary rounded-full'>Login</button>
         </div>
       </div>
     );

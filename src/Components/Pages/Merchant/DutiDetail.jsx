@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DutiDetail = () => {
   const {
@@ -23,6 +25,7 @@ const DutiDetail = () => {
       tollParking: data.tollParking,
       lunch: data.lunch,
       dinner: data.dinner,
+
     };
      fetch("http://localhost:5000/duty-details", {
        method: "POST",
@@ -33,9 +36,13 @@ const DutiDetail = () => {
      })
        .then((res) => res.json())
        .then((data) => {
-         console.log(data);
+  
        });
     console.log(bookingInfo);
+     toast.success("Product added", {
+       position: toast.POSITION.TOP_CENTER,
+     });
+     
   };
 
   return (
@@ -269,6 +276,7 @@ const DutiDetail = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
