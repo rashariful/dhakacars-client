@@ -7,6 +7,7 @@ const DriverDetails = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
   const handleBooking = (data) => {
     const bookingInfo = {
       userName: data.userName,
