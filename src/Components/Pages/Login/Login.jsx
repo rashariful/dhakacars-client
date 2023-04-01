@@ -6,6 +6,7 @@ import { AuthContext } from "../../../Context/UserContext";
 import useToken from "../../../hook/useToken";
 
 const Login = () => {
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -24,30 +25,33 @@ const Login = () => {
     event.preventDefault();
 
     const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const login = {
+      email: form.email.value,
+     password: form.password.value
+    }
     // form.reset();
 
-    signInUser(email, password)
-      .then((result) => {
-        const user = result.user;
+    fetch("http://localhost:5000/api/user/login", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(login),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data?.data?.token)
         swal({
           title: "Login Successful!",
           icon: "success",
           button: "ok",
         });
-         localStorage.setItem("user", user.email);
-
-        setError("");
-      })
-      .catch((error) => {
-        setError(error.message);
-        swal({
-          title: error,
-          icon: "warning",
-          button: "ok",
-        });
       });
+     
+    // localStorage.setItem("token", data?.data?.token);
+
+    console.log(login);
 
     navigate(from, { replace: true });
   };
@@ -57,7 +61,7 @@ const Login = () => {
     signInUserWithGoogle()
       .then((result) => {
         const user = result.user;
-        saveUserInfo(user.displayName, user.email, user.role);
+        // saveUserInfo(user.displayName, user.email, user.role);
         swal({
           title: "Login Successful!",
           icon: "success",
@@ -109,22 +113,23 @@ const Login = () => {
   };
 
   // / save user info to mongoDB
-  const saveUserInfo = (name, email, role) => {
-    const user = { name, email, role: "buyer" };
+  // const saveUserInfo = (name, email, role) => {
+  //   const user = { name, email, role: "buyer" };
 
-    fetch("http://localhost:5000/api/user/login", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+  //   fetch("http://localhost:5000/api/user/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // };
   
   const [token] = useToken(user);
   console.log("login page", user);
+  
   return (
     <>
       <section className="text-gray-600 body-font relative">

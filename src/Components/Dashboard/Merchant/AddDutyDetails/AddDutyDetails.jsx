@@ -6,11 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../../Context/UserContext";
 
 const AddDutyDetails = () => {
-
-   const { user } = useContext(AuthContext);
-   const email = user.email;
-   const sellerName = user.displayName;
-   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const email = user.email;
+  const sellerName = user.displayName;
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,8 +35,8 @@ const AddDutyDetails = () => {
       lunch: data.lunch,
       dinner: data.dinner,
     };
-    
-    fetch("http://localhost:5000/api/dutyDetails", {
+
+    fetch(`${process.env.REACT_APP_ROOT}/dutyDetails`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,13 +44,15 @@ const AddDutyDetails = () => {
       body: JSON.stringify(dutydetails),
     })
       .then((res) => res.json())
-      .then((data) => data);
+      .then((data) => console.log(data.data));
+
     console.log(dutydetails);
     toast.success("Details added", {
       position: toast.POSITION.TOP_CENTER,
     });
-              // navigate("/dashboard/show-details");
+    // navigate("/dashboard/show-details");
   };
+
 
   return (
     <div>

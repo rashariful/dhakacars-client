@@ -1,34 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../../Context/UserContext";
 
 const DutyDetailsShow = () => {
+
 const {user} = useContext(AuthContext)
+
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/dutyDetails/merchant?email=${user?.email}`
+        `${process.env.REACT_APP_ROOT}/dutyDetails/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
     },
   });
 
-  console.log(products);
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/dutyDetails/${id}`, {
+    fetch(`${process.env.REACT_APP_ROOT}/dutyDetails/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          refetch();
         }
+        refetch();
       });
   };
 

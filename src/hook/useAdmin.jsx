@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
-  console.log(admin)
 
   useEffect(() => {
     const email = user?.email;

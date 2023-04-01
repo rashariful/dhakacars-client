@@ -52,9 +52,9 @@ const DashboardLayout = () => {
             </li>
               <>
                 <li className="hover:bg-primary rounded-md hover:text-gray-200">
-                  <Link to="/dashboard/bookings">
+                  <Link to="/dashboard/my-bookings">
                     <FaShoppingCart className="w-6 h-6 text-gray-500"></FaShoppingCart>
-                    <span className="ml-3">My Orders</span>
+                    <span className="ml-3">My Bookings</span>
                   </Link>
                 </li>
                 <li className="hover:bg-primary rounded-md hover:text-gray-200">

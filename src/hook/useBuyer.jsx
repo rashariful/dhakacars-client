@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const useBuyer = (user) => {
   const [buyer, setBuyer] = useState(false);
-console.log(buyer)
+
   useEffect(() => {
     const email = user?.email;
 

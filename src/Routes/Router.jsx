@@ -10,6 +10,8 @@ import Register from "../Components/Pages/Register/Register";
 import UserBooking from "../Components/Pages/UserBooking/UserBooking";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import Main from "../Layout/Main/Main";
+import MyBookings from "../Components/Dashboard/MyBookings/MyBookings";
+import BookingDetails from "../Components/Dashboard/BookingDetails/BookingDetails";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,15 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/show-details",
         element: <DutyDetailsShow></DutyDetailsShow>,
+      },
+      {
+        path: "/dashboard/my-bookings",
+        element: <MyBookings/>,
+      },
+      {
+        path: "/dashboard/booking-details/:id",
+        element: <BookingDetails/>,
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_ROOT}/booking/${params.id}`)
       },
     ],
   },
