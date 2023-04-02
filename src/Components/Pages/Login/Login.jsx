@@ -31,7 +31,7 @@ const Login = () => {
     }
     // form.reset();
 
-    fetch("http://localhost:5000/api/user/login", {
+    fetch(`${process.env.REACT_APP_ROOT}/user/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
