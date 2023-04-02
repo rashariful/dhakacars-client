@@ -12,6 +12,8 @@ import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import Main from "../Layout/Main/Main";
 import MyBookings from "../Components/Dashboard/MyBookings/MyBookings";
 import BookingDetails from "../Components/Dashboard/BookingDetails/BookingDetails";
+import About from "../Components/Pages/Home/About/About";
+import Blog from "../Components/Pages/Home/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/about-us",
+        element: <About/>,
+      },
+      {
+        path: "/blog",
+        element: <Blog/>,
       },
       {
         path: "/booking",
