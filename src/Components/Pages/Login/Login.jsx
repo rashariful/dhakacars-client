@@ -6,7 +6,6 @@ import { AuthContext } from "../../../Context/UserContext";
 import useToken from "../../../hook/useToken";
 
 const Login = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -19,7 +18,7 @@ const Login = () => {
     singInUserWithFacebook,
   } = useContext(AuthContext);
 
-    console.log(`Google user`, user);
+  console.log(`Google user`, user);
   // 01 Login is user with email and password
   const handleLoginSubmit = (event) => {
     event.preventDefault();
@@ -27,8 +26,8 @@ const Login = () => {
     const form = event.target;
     const login = {
       email: form.email.value,
-     password: form.password.value
-    }
+      password: form.password.value,
+    };
     // form.reset();
 
     fetch(`${process.env.REACT_APP_ROOT}/user/login`, {
@@ -41,14 +40,14 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("token", data?.data?.token)
+        localStorage.setItem("token", data?.data?.token);
         swal({
           title: "Login Successful!",
           icon: "success",
           button: "ok",
         });
       });
-     
+
     // localStorage.setItem("token", data?.data?.token);
 
     console.log(login);
@@ -126,10 +125,10 @@ const Login = () => {
   //     .then((res) => res.json())
   //     .then((data) => console.log(data));
   // };
-  
+
   const [token] = useToken(user);
   console.log("login page", user);
-  
+
   return (
     <>
       <section className="text-gray-600 body-font relative">
