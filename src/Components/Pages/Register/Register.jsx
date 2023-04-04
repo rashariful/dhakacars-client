@@ -3,44 +3,78 @@ import { FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../../Context/UserContext";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
   const { setUser, setError, registerUser, registerUserWithGoogle } =
     useContext(AuthContext);
 
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+
   // 01 handel Register Function for submit doc
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const handleRegister = (data) => {
+  console.log(data)
+  
+    const register ={
+      userName: data?.userName,
+      email: data?.email,
+      password: data?.password,
+      confirmPassword: data?.confirmPassword
+    }
 
-    form.reset();
-
-    registerUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        window.location.reload();
-        console.log(user);
+    fetch(`${process.env.REACT_APP_ROOT}/user/singup`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(register),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data?.data?.token)
         swal({
-          title: "Registration Successful!",
+          title: "Register Successful!",
           icon: "success",
           button: "ok",
         });
-        setError("");
-      })
-      .catch((error) => {
-        console.error(error);
-        setError(error.message);
-        swal({
-          title: error,
-          icon: "warning",
-          button: "ok",
-        });
       });
-    form.reset();
+     
+    // localStorage.setItem("token", data?.data?.token);
+
+    console.log(register);
+
+
+    // registerUser(email, password)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     setUser(user);
+    //     window.location.reload();
+    //     console.log(user);
+    //     swal({
+    //       title: "Registration Successful!",
+    //       icon: "success",
+    //       button: "ok",
+    //     });
+    //     setError("");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     setError(error.message);
+    //     swal({
+    //       title: error,
+    //       icon: "warning",
+    //       button: "ok",
+    //     });
+    //   });
+  
   };
+
+
 
   // 02 register user with Google
   const handleRegisterGoogle = () => {
@@ -69,8 +103,9 @@ const Register = () => {
       <section className="text-gray-600 body-font relative">
         <div className=" py-6 sm:py-8 lg:py-12">
           <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+
             <form
-              onSubmit={handleRegister}
+              onSubmit={handleSubmit(handleRegister)}
               className="max-w-md bg-white border rounded-lg mx-auto"
             >
               <h2 className="text-gray-700 text-xl font-semibold text-center mt-4 md:mt-8">
@@ -82,12 +117,18 @@ const Register = () => {
                     for="name"
                     className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                   >
-                    Name
+                    User name
                   </label>
+
                   <input
-                    name="name"
                     className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    {...register("userName", {
+                      required: "User Name is required",
+                    })}
                   />
+                   {errors.userName && (
+                  <p className="text-red-500">{errors.userName.message}</p>
+                )}
                 </div>
                 <div>
                   <label
@@ -99,20 +140,52 @@ const Register = () => {
                   <input
                     name="email"
                     className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    {...register("email", {
+                      required: "Email is required",
+                    })}
                   />
+                     {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
                 </div>
 
                 <div>
                   <label
-                    for="password"
+                   
                     className="inline-block text-gray-800 text-sm sm:text-base mb-2"
                   >
                     Password
                   </label>
+
                   <input
-                    name="password"
+                 
                     className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    {...register("password", {
+                      required: "Password is required",
+                    })}
                   />
+                     {errors.password && (
+                  <p className="text-red-500">{errors.password.message}</p>
+                )}
+                </div>
+                <div>
+                  <label
+                   
+                    className="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                  >
+                    Confirm Password
+                  </label>
+
+                  <input
+                 
+                    className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                    {...register("confirmPassword", {
+                      required: "confirm password is required",
+                    })}
+                  />
+                     {errors.confirmpassword && (
+                  <p className="text-red-500">{errors.confirmpassword.message}</p>
+                )}
                 </div>
 
                 <button className="block bg-rose-500 hover:bg-rose-600 active:bg-rose-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">

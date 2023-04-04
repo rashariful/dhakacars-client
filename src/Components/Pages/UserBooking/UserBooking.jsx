@@ -6,11 +6,14 @@ import { AuthContext } from "../../../Context/UserContext";
 const UserBooking = () => {
   const { user } = useContext(AuthContext);
   const email = user.email;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  
   const handleBooking = (data) => {
     const booking = {
       userName: data.userName,
