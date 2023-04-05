@@ -26,7 +26,7 @@ const Register = () => {
       confirmPassword: data?.confirmPassword
     }
 
-    fetch(`${process.env.REACT_APP_ROOT}/user/singup`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/user/singup`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

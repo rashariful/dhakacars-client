@@ -12,7 +12,7 @@ const {user} = useContext(AuthContext)
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_ROOT}/dutyDetails/merchant?email=${user?.email}`
+        `${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
@@ -22,7 +22,7 @@ const {user} = useContext(AuthContext)
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`${process.env.REACT_APP_ROOT}/dutyDetails/${id}`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -60,7 +60,7 @@ const {user} = useContext(AuthContext)
               {products.map((product, i) => (
                 <tr>
                   <th>{i + 1}</th>
-                  <td>{product?.PickUpDate}</td>
+                  <td>{product?.pickUpDate}</td>
                   <td>{product?.userName}</td>
                   <td>{product?.driverName}</td>
                   <td>{product?.driverNumber}</td>
@@ -70,7 +70,7 @@ const {user} = useContext(AuthContext)
                   <td>{product?.startTime}</td>
                   <td>{product?.endTime}</td>
                   <td>{product?.overTime}</td>
-                  <td>{product?.cng}</td>
+                  <td>{product?.cngConst}</td>
 
                   <td>
                     <button

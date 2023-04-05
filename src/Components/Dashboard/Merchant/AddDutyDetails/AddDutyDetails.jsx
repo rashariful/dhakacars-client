@@ -24,8 +24,8 @@ const AddDutyDetails = () => {
       driverName: data.driverName,
       driverNumber: data.driverNumber,
       carNumber: data.carNumber,
-      cngCost: data.cng,
-      PickUpDate: data.PickUpDate,
+      cngCost: data.cngCost,
+      pickUpDate: data.pickUpDate,
       startTime: data.startTime,
       endTime: data.endTime,
       startKM: data.startKm,
@@ -36,7 +36,7 @@ const AddDutyDetails = () => {
       dinner: data.dinner,
     };
 
-    fetch(`${process.env.REACT_APP_ROOT}/dutyDetails`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -52,7 +52,6 @@ const AddDutyDetails = () => {
     });
     // navigate("/dashboard/show-details");
   };
-
 
   return (
     <div>
@@ -135,7 +134,7 @@ const AddDutyDetails = () => {
                 </label>
                 <input
                   className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                  {...register("cng", {
+                  {...register("cngCost", {
                     required: "CNG cost is required",
                   })}
                 />
@@ -151,12 +150,12 @@ const AddDutyDetails = () => {
                 <input
                   type="date"
                   className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-                  {...register("PickUpDate", {
+                  {...register("pickUpDate", {
                     required: "Pick-up Date is required",
                   })}
                 />
-                {errors.PickUpDate && (
-                  <p className="text-red-500">{errors.PickUpDate.message}</p>
+                {errors.pickUpDate && (
+                  <p className="text-red-500">{errors.pickUpDate.message}</p>
                 )}
               </div>
               {/* Start Time */}
