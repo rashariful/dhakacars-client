@@ -27,8 +27,8 @@ const Footer = () => {
             </div>
 
             <p className="text-gray-400 sm:pr-8 mb-6">
-              Filler text is dummy text which has no meaning however looks very
-              similar to real text.
+             This is car rental company in Dhaka Bangladesh.
+             we offering cheapest price in Dhaka
             </p>
 
             <div className="flex gap-4">
