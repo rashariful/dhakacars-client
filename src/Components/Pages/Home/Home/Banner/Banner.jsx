@@ -4,7 +4,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 const Banner = () => {
   return (
     <div>
-      <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
+      <div className="bg-white -z-0 pb-6 sm:pb-8 lg:pb-12">
         <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
           <section className="flex flex-col lg:flex-row justify-between gap-6 sm:gap-10 md:gap-16">
             <div className="xl:w-5/12 flex flex-col justify-center sm:text-center lg:text-left lg:py-12 xl:py-24">

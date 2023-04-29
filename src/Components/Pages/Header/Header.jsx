@@ -3,8 +3,6 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 
-
-
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const menuItems = (
@@ -27,8 +25,8 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar flex justify-between max-w-screen-xl mx-auto">
-      <div className="navbar-start">
+    <div className="navbar flex z-50 justify-between rounded-md fixed top-0 left-0 right-0 shadow-md max-w-screen-xl mx-auto">
+      <div className="navbar-start z-30">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -81,7 +79,10 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl border border-rose-500">
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case text-xl border border-rose-500"
+        >
           <span className="text-rose-600 font-semibold"> DhakaCars</span>
         </Link>
       </div>
