@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
+import logo from "../../../assets/images/Logo_Dhakacars.svg"
 
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar flex z-50 justify-between rounded-md fixed top-0 left-0 right-0 shadow-md max-w-screen-xl mx-auto">
+    <div className="navbar flex justify-between bg-white sticky top-0 left-0 right-0 z-50 shadow-md  rounded-md max-w-screen-2xl mx-auto">
       <div className="navbar-start z-30">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -81,9 +82,10 @@ const Header = () => {
         </div>
         <Link
           to="/"
-          className="btn btn-ghost normal-case text-xl border border-rose-500"
+          className="text-md"
         >
-          <span className="text-rose-600 font-semibold"> DhakaCars</span>
+          {/* <span className="text-rose-600 font-semibold"> DhakaCars</span> */}
+          <img src={logo} className="w-64 h-auto" alt="Dhakacars_logo" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
