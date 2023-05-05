@@ -1,84 +1,52 @@
-import React from "react";
+import React from 'react';
+import '../../../../styles/AboutCompStyles.css';
+// import {car,carout,carshop,worker} from '../../../../assets/AboutCompImages';
 
 const About = () => {
   return (
-    <div class="bg-white py-6 sm:py-8 lg:py-12">
-      <div class="mx-auto max-w-screen-md px-4 md:px-8">
-        <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6">
-          Our competitive advantage
-        </h1>
+    <div className='aboutcomp-sec'>
 
-        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
-          This is a section of some simple filler text, also known as
-          placeholder text. It shares some characteristics of a real written
-          text but is random or otherwise generated. It may be used to display a
-          sample of fonts or generate text for testing. Filler text is dummy
-          text which has no meaning however looks very similar to real text. The
-          important factor when using filler text is that the text looks
-          realistic otherwise it will not look very good.
-          <br />
-          <br />
-          This is a section of some simple filler text, also known as
-          placeholder text. It shares some characteristics of a real written
-          text but is{" "}
-          <a
-            href="#"
-            class="text-indigo-500 underline transition duration-100 hover:text-indigo-600 active:text-indigo-700"
-          >
-            random
-          </a>{" "}
-          or otherwise generated. It may be used to display a sample of fonts or
-          generate text for testing. Filler text is dummy text which has no
-          meaning however looks very similar to real text.
-        </p>
+    <div className='aboutcomp-con'>
+        <div className='ac-left'>
 
-        <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">
-          About us
-        </h2>
+            {/* <img src={worker}/> */}
 
-        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
-          This is a section of some simple filler text, also known as
-          placeholder text. It shares some characteristics of a real written
-          text but is random or otherwise generated. It may be used to display a
-          sample of fonts or generate text for testing. Filler text is dummy
-          text which has no meaning however looks very similar to real text.
-        </p>
-
-        <ul class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8">
-          <li>This is a section of some simple filler text</li>
-          <li>Also known as placeholder text</li>
-          <li>It shares some characteristics of a real written text</li>
-        </ul>
-
-        <blockquote class="mb-6 border-l-4 pl-4 italic text-gray-500 sm:text-lg md:mb-8 md:pl-6">
-          “This is a section of some simple filler text, also known as
-          placeholder text. It shares some characteristics of a real written
-          text but is random or otherwise generated.”
-        </blockquote>
-
-        <div class="relative mb-6 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:mb-8">
-          <img
-            src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600&h=350"
-            loading="lazy"
-            alt="Photo by Minh Pham"
-            class="h-full w-full object-cover object-center"
-          />
         </div>
 
-        <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">
-          Features
-        </h2>
+        <div className='ac-right'>
 
-        <p class="text-gray-500 sm:text-lg">
-          This is a section of some simple filler text, also known as
-          placeholder text. It shares some characteristics of a real written
-          text but is random or otherwise generated. It may be used to display a
-          sample of fonts or generate text for testing. Filler text is dummy
-          text which has no meaning however looks very similar to real text.
-        </p>
-      </div>
+       <h4>About Company</h4> 
+        <h2>You start the engine and your adventure begins</h2>
+        <p>Certain but she but shyness why cottage.
+             Guy the put instrument sir entreaties affronting. 
+             Pretended exquisite see cordially the you. Weeks quiet
+              do vexed or whose. Motionless if no to affronting
+               imprudence no precaution. 
+            My indulged as disposal strongly attended.</p>
+
+            <div className='ac-boxes'>
+
+                <div className='ac-box'>
+                    {/* <img src={car}/> */}
+                    <h3>85<sup>Car Types</sup></h3>
+                </div>
+
+                <div className='ac-box'>
+                    {/* <img src={carout}/> */}
+                    <h3>65<sup>Rental Outlets</sup></h3>
+                </div>
+
+                <div className='ac-box'>
+                    {/* <img src={carshop}/> */}
+                    <h3>45<sup>Repair Shop</sup></h3>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-  );
-};
+    </div>      
+  )
+}
 
-export default About;
+export default About

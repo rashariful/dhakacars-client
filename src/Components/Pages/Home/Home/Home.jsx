@@ -9,7 +9,7 @@ const Home = () => {
         <div>
            <section className='mt-10'> <Banner/> </section>
            <section className='mt-10'> <Testimonials/> </section>
-           {/* <section className='mt-10'> <Contact/> </section> */}
+           <section className='mt-10'> <Contact/> </section>
             {/* <Counter></Counter> */}
             
         </div>

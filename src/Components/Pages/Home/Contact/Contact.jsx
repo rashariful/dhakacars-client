@@ -1,25 +1,64 @@
-import React from "react";
+import React from 'react';
+import '../../../../styles/ContactUsStyles.css';
+import COLORS  from "../../../../assets/COLORS/COLORS"
+import {FaPhoneAlt,FaEnvelope,FaEnvelopeOpenText,FaMapMarkedAlt} from 'react-icons/fa';
 
 const Contact = () => {
   return (
-    <div>
-      <h1 className="font-bold self-center py-3 items-center">
-        This is contact page
-      </h1>
-      <div>
-          {/* <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.4238995787433!2d90.41782775223245!3d23.82942114849882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c744f7eea0b5%3A0x9f02e915704f2b58!2sDhaka%20cars!5e0!3m2!1sbn!2sbd!4v1682799555326!5m2!1sbn!2sbd"
-            width="600"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe> */}
-       
-      </div>
-    </div>
-  );
-};
+    <div className='contact-sec'>
+        <div className='contact-bg'>
+            <div className='contact-con'>
 
-export default Contact;
+                <div className='left-con'>
+                    <h2 className='text-4xl font-extrabold mb-10 leading-normal'>Need additional information?</h2>
+                    <p className='mb-10'>A multifaceted professional skilled
+                         in multiple fields of research, development 
+                         as well as a learning specialist. Over 15 years 
+                         of experience.
+                    </p>
+
+                    <span className='flex gap-3 mb-3'>
+                <FaPhoneAlt size={19}/>
+                <p  className='font-semibold'> +8801850-273117</p>
+                </span>
+                <span className='flex gap-3 mb-3'>
+                <FaEnvelope size={19}/>
+                <p className='font-semibold'>samuelojeyinka@gmail.com</p>
+                </span>
+                 <span className='flex gap-3 mb-3'>
+                <FaMapMarkedAlt size={19}/>
+                <p className='font-semibold'>Nigeria,Osun</p>
+                </span>
+
+
+                </div>
+
+                 <div className='right-con'>
+
+                    <form>
+                        <label>Full Name <span>*</span></label>
+                        <input type='text' className='bg-rose-500' placeholder='EG: "Sam OJeyinka"'/>
+                        <br/><br/>
+
+                        <label>Email <span>*</span></label>
+                        <input type='email' placeholder='youremail@example.com'/>
+                        <br/><br/>
+                        <label>Compose text <span>*</span></label>
+                        <br/><br/>
+                        <textarea className='border border-slate-400 rounded-md' placeholder='Write here..'>
+                        
+                        </textarea>
+                        <button className='btn btn-primary w-full' ><FaEnvelopeOpenText/> Send message</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  )
+}
+
+export default Contact
