@@ -63,6 +63,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         saveUserInfo(user.displayName, user.email, user.role);
+        
         swal({
           title: "Login Successful!",
           icon: "success",
