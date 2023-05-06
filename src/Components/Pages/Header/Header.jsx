@@ -80,13 +80,15 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        <div className="">
         <Link
           to="/"
           className="text-md"
         >
           {/* <span className="text-rose-600 font-semibold"> DhakaCars</span> */}
-          <img src={logo} className="w-64 h-auto" alt="Dhakacars_logo" />
+          <img src={logo} className="w-64 h-auto mx-auto" alt="Dhakacars_logo" />
         </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -117,6 +119,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
+
       <label
         htmlFor="dashboard-drawer"
         tabIndex={0}

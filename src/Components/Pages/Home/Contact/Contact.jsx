@@ -23,11 +23,11 @@ const Contact = () => {
                 </span>
                 <span className='flex gap-3 mb-3'>
                 <FaEnvelope size={19}/>
-                <p className='font-semibold'>samuelojeyinka@gmail.com</p>
+                <p className='font-semibold'>dhakacars.com@gmail.com</p>
                 </span>
                  <span className='flex gap-3 mb-3'>
                 <FaMapMarkedAlt size={19}/>
-                <p className='font-semibold'>Nigeria,Osun</p>
+                <p className='font-semibold'>Road # 03, House # 03, Nikunja 02, <br/> <span>Dhaka Bangladesh 1229</span> </p>
                 </span>
 
 
@@ -36,19 +36,19 @@ const Contact = () => {
                  <div className='right-con'>
 
                     <form>
-                        <label>Full Name <span>*</span></label>
-                        <input type='text' className='bg-rose-500' placeholder='EG: "Sam OJeyinka"'/>
+                        <label>Full Name <span className='text-rose-600'>*</span></label>
+                        <input type='text' className='border border-slate-400 rounded-md focus:border-rose-600 transition duration-75' placeholder='EG: "Sam OJeyinka"'/>
                         <br/><br/>
 
-                        <label>Email <span>*</span></label>
-                        <input type='email' placeholder='youremail@example.com'/>
+                        <label>Email <span className='text-rose-600'>*</span></label>
+                        <input className='border border-slate-400 rounded-md focus:border-rose-600 transition duration-75'  type='email' placeholder='youremail@example.com'/>
                         <br/><br/>
-                        <label>Compose text <span>*</span></label>
+                        <label>Message <span className='text-rose-600'>*</span></label>
                         <br/><br/>
-                        <textarea className='border border-slate-400 rounded-md' placeholder='Write here..'>
+                        <textarea className='border border-slate-400 rounded-md focus:border-rose-600 transition duration-75' placeholder='Write here..'>
                         
                         </textarea>
-                        <button className='btn btn-primary w-full' ><FaEnvelopeOpenText/> Send message</button>
+                        <button className='btn mt-5 bg-[#FF4C30] border-none w-full hover:bg-[#FF4C40]' ><FaEnvelopeOpenText className='mr-5'/> Send message</button>
                     </form>
 
                 </div>

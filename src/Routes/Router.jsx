@@ -14,6 +14,8 @@ import MyBookings from "../Components/Dashboard/MyBookings/MyBookings";
 import BookingDetails from "../Components/Dashboard/BookingDetails/BookingDetails";
 import About from "../Components/Pages/Home/About/About";
 import Blog from "../Components/Pages/Home/Blog/Blog";
+import PrivacyPolicy from "../Components/Pages/Home/LegalInfo/PrivacyPolicy";
+import TermsOfService from "../Components/Pages/Home/LegalInfo/TermsOfService";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/booking",
         element: <UserBooking />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms-of-service",
+        element: <TermsOfService />,
       },
       {
         path: "/login",
