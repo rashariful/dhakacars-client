@@ -62,7 +62,7 @@ const Login = () => {
     signInUserWithGoogle()
       .then((result) => {
         const user = result.user;
-        // saveUserInfo(user.displayName, user.email, user.role);
+        saveUserInfo(user.displayName, user.email, user.role);
         swal({
           title: "Login Successful!",
           icon: "success",
@@ -114,19 +114,25 @@ const Login = () => {
   };
 
   // / save user info to mongoDB
-  // const saveUserInfo = (name, email, role) => {
-  //   const user = { name, email, role: "buyer" };
+  const saveUserInfo = (name, email, role) => {
+    const user = { name, email, role: "buyer" };
 
-  //   fetch("http://localhost:5000/api/user/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // };
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/user/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+      localStorage.setItem("token", data?.data?.token);
+      console.log(data)
+
+      });
+  };
 
   const [token] = useToken(user);
   console.log("login page", user);
