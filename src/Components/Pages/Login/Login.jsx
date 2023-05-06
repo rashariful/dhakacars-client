@@ -31,7 +31,7 @@ const Login = () => {
 
     // form.reset();
 
-    fetch(`${process.env.REACT_APP_ROOT}api/v1/user/login`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/user/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,10 +39,10 @@ const Login = () => {
       },
       body: JSON.stringify(login),
     })
-    console.log(login)
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("token", data?.data?.token);
+    .then((res) => res.json())
+    .then((data) => {
+      localStorage.setItem("token", data?.data?.token);
+      console.log(login, data, "line 45")
         swal({
           title: "Login Successful!",
           icon: "success",
