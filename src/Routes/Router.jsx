@@ -16,6 +16,7 @@ import About from "../Components/Pages/Home/About/About";
 import Blog from "../Components/Pages/Home/Blog/Blog";
 import PrivacyPolicy from "../Components/Pages/Home/LegalInfo/PrivacyPolicy";
 import TermsOfService from "../Components/Pages/Home/LegalInfo/TermsOfService";
+import Contact from "../Components/Pages/Home/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog/>,
+      },
+      {
+        path: "/contact-us",
+        element: <Contact/>,
       },
       {
         path: "/booking",

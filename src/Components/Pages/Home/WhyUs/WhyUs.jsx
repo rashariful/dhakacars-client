@@ -1,6 +1,7 @@
 import React from 'react';
-import {lg,ccd, wcbg,nhc,aip,} from '../assets/index';
-import '../styles/WhyChooseUsStyles.css';
+// import whyImg from "../../../../assets/ChooseUs"
+import "../../../../styles/WhyChooseUsStyles.css";
+
 import {FaAngleRight} from 'react-icons/fa';
 
 const WhyChooseUs = () => {
@@ -8,7 +9,7 @@ const WhyChooseUs = () => {
     <div className='chooseUs-section'>
         <div className='wcu-container'>
         <div className='choose-us-image'>
-            <img src={lg}/>
+            {/* <img src={lg}/> */}
          </div>
 
             <div className='wcu-flex'>
@@ -32,7 +33,7 @@ const WhyChooseUs = () => {
                 <div className='right'>
 
                     <div className='wcu-box'>
-                        <img src={ccd}/>
+                        {/* <img src={ccd}/> */}
                         <div className='wcu-txt'>
                             <h3>Cross Country Drive</h3>
                             <p>Take your driving experience to the next level with
@@ -45,7 +46,7 @@ const WhyChooseUs = () => {
                         {/* ================================================ */}
 
                         <div className='wcu-box'>
-                        <img src={aip}/>
+                        {/* <img src={aip}/> */}
                         <div className='wcu-txt'>
                             <h3>All Inclusive Pricing</h3>
                             <p>Get everything you need in one convenient, transparent price 
@@ -59,7 +60,7 @@ const WhyChooseUs = () => {
                     {/* =================================================== */}
 
                     <div className='wcu-box'>
-                        <img src={nhc}/>
+                        {/* <img src={nhc}/> */}
                         <div className='wcu-txt'>
                             <h3>No Hidden Charges</h3>
                             <p>Enjoy peace of mind with our no hidden charges policy. 
