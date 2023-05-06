@@ -22,15 +22,16 @@ const Login = () => {
   // 01 Login is user with email and password
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-
     const form = event.target;
+
     const login = {
       email: form.email.value,
       password: form.password.value,
     };
+
     // form.reset();
 
-    fetch(`${process.env.REACT_APP_ROOT}/api/v1/user/login`, {
+    fetch(`${process.env.REACT_APP_ROOT}api/v1/user/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,6 +39,7 @@ const Login = () => {
       },
       body: JSON.stringify(login),
     })
+    console.log(login)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("token", data?.data?.token);
