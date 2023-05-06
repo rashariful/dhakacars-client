@@ -42,7 +42,7 @@ const Login = () => {
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("token", data?.data?.token);
-      console.log(login, data, "line 45")
+      console.log(login, data, "line 45 now updated")
         swal({
           title: "Login Successful!",
           icon: "success",
