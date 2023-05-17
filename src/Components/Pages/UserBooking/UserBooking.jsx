@@ -25,7 +25,7 @@ const UserBooking = () => {
       Note: data.Note,
     };
 
-    fetch(`${process.env.REACT_APP_ROOT}/booking`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

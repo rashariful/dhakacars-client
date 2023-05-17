@@ -1,12 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MdDeleteForever } from "react-icons/md";
 import { AuthContext } from "../../../../Context/UserContext";
 
 const DutyDetailsShow = () => {
+  const { user } = useContext(AuthContext);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-const {user} = useContext(AuthContext)
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products", user?.email],
@@ -18,11 +24,9 @@ const {user} = useContext(AuthContext)
       return data.data;
     },
   });
-  console.log(products)
-
+  // console.log(products)
 
   const handleDelete = (id) => {
-    console.log(id);
     fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/${id}`, {
       method: "DELETE",
     })
@@ -36,9 +40,10 @@ const {user} = useContext(AuthContext)
 
   return (
     <div>
+      <div></div>
       <div className="w-[80%] mx-auto">
         <h1 className="text-2xl font-bold my-10">All Duty Details</h1>
-        <div className="lg:w-2/2 w-full mx-auto overflow-auto">
+        <div className="lg:w-2/2 shadow-md w-full mx-auto overflow-auto">
           <table className="table w-full whitespace-no-wrap">
             <thead>
               <tr>
@@ -59,7 +64,7 @@ const {user} = useContext(AuthContext)
             </thead>
             <tbody>
               {products.map((product, i) => (
-                <tr>
+                <tr key={product._id}>
                   <th>{i + 1}</th>
                   <td>{product?.pickUpDate}</td>
                   <td>{product?.userName}</td>
@@ -71,15 +76,38 @@ const {user} = useContext(AuthContext)
                   <td>{product?.startTime}</td>
                   <td>{product?.endTime}</td>
                   <td>{product?.overTime}</td>
-                  <td>{product?.cngConst}</td>
+                  <td>{product?.cngCost}</td>
 
-                  <td>
-                    <button
-                      onClick={() => handleDelete(product?._id)}
-                      className="btn btn-sm"
-                    >
-                      Delete
-                    </button>
+                  {/* <button
+                    className="btn btn-sm bg-white border border-red-500"
+                    onClick={() => setShowConfirmation(true)}
+                  >
+                    <MdDeleteForever color="red" size={24} />
+                  </button>
+
+                  {showConfirmation && (
+                    <div>
+                      <p>Are you sure you want to delete this product?</p>
+                      <button
+                        className="btn btn-sm btn-warning"
+                        onClick={() => handleDelete(product?._id)}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() => setShowConfirmation(false)}
+                      >
+                        No
+                      </button>
+                    </div>
+                  )} */}
+
+                  <td
+                    className="cursor-pointer "
+                    onClick={() => handleDelete(product?._id)}
+                  >
+                    <MdDeleteForever color="red" size={24} />
                   </td>
                 </tr>
               ))}

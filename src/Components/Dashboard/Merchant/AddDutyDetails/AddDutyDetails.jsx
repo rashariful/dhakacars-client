@@ -9,7 +9,7 @@ const AddDutyDetails = () => {
   const { user } = useContext(AuthContext);
   const email = user.email;
   const sellerName = user.displayName;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {
     register,
@@ -44,9 +44,8 @@ const AddDutyDetails = () => {
       body: JSON.stringify(dutydetails),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data.data));
+      .then((data) => data);
 
-    console.log(dutydetails);
     toast.success("Details added", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -58,7 +57,7 @@ const AddDutyDetails = () => {
       <div className="py-6 sm:py-8 lg:py-12">
         <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
           <h2 className="text-gray-600 capitalize text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">
-            Duty Details
+            Add Duty Details
           </h2>
           <p className="text-rose-800   font-bold text-center mb-4 md:mb-4"></p>
 

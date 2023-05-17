@@ -3,24 +3,48 @@ import React, { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../../Context/UserContext";
 import { Link } from "react-router-dom";
+import {
+  MdDelete,
+  MdDeleteForever,
+  MdDriveFileRenameOutline,
+} from "react-icons/md";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
-  console.log(process.env)
 
   const { data: bookings = [], refetch } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_ROOT}/booking/merchant?email=${user?.email}`
-        // "http://localhost:5000/api/v1/booking"
-        // "https://coderbyte.com/api/challenges/json/json-cleaning"
+        `${process.env.REACT_APP_ROOT}/api/v1/booking/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
     },
   });
-  console.log("22 line", bookings);
+  console.log(bookings);
+  const handleDelete = (id) => {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+        }
+        refetch();
+      });
+  };
+
+  const handleUpdate = (id) => {
+    console.log(id);
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return (
     <div>
@@ -31,7 +55,9 @@ const MyBookings = () => {
             <thead>
               <tr>
                 <th>No</th>
-                <th>date</th>
+                <th>User name</th>
+                <th>Pickup Date & Time</th>
+                <th>pickup location</th>
                 <th>Car Type</th>
                 <th>Status</th>
                 <th>action</th>
@@ -39,20 +65,45 @@ const MyBookings = () => {
             </thead>
             <tbody>
               {bookings.map((booking, i) => (
-                <tr>
+                <tr key={booking._id}>
                   <th>{i + 1}</th>
+                  <td>{booking?.userName}</td>
                   <td>{booking?.pickupDateTime}</td>
+                  <td>{booking?.PickUpLocation}</td>
                   <td>{booking?.carType}</td>
                   <td>
                     <button className="btn btn-warning btn-xs">
                       proccesing
                     </button>
                   </td>
-                  <td>
+                  {/* <td>
                     <Link to={`/dashboard/booking-details/${booking?._id}`}>
                       <button className="btn btn-sm">Details</button>
                     </Link>
-                  </td>
+                  </td> */}
+               
+                    <td>
+                      <Link to={`/dashboard/booking-update/${booking?._id}`}>
+                        <button className="btn gap-2 btn-sm bg-blue-600 border-none hover:bg-blue-700">
+                          {" "}
+                          <MdDriveFileRenameOutline
+                            color="white"
+                            size={24}
+                          />{" "}
+                          edit item{" "}
+                        </button>
+                      </Link>
+                    </td>
+                    <td
+                      className="cursor-pointer "
+                      onClick={() => handleDelete(booking?._id)}
+                    >
+                      <button className="btn gap-2 btn-sm bg-rose-600 border-none hover:bg-rose-700">
+                        {" "}
+                        <MdDelete color="white" size={24} /> Delete item{" "}
+                      </button>
+                    </td>
+                  
                 </tr>
               ))}
             </tbody>

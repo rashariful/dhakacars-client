@@ -17,6 +17,7 @@ import Blog from "../Components/Pages/Home/Blog/Blog";
 import PrivacyPolicy from "../Components/Pages/Home/LegalInfo/PrivacyPolicy";
 import TermsOfService from "../Components/Pages/Home/LegalInfo/TermsOfService";
 import Contact from "../Components/Pages/Home/Contact/Contact";
+import BookingUpdate from "../Components/Dashboard/MyBookings/BookingUpdate";
 
 const router = createBrowserRouter([
   {
@@ -93,9 +94,14 @@ const router = createBrowserRouter([
         element:<MyBookings/>,
       },
       {
+        path: "/dashboard/booking-update/:id",
+        element: <BookingUpdate/>,
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${params.id}`)
+      },
+      {
         path: "/dashboard/booking-details/:id",
         element: <BookingDetails/>,
-        loader: ({ params }) => fetch(`${process.env.REACT_APP_ROOT}/booking/${params.id}`)
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${params.id}`)
       },
     ],
   },
