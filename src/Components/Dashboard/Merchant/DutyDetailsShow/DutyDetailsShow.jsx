@@ -18,7 +18,7 @@ const DutyDetailsShow = () => {
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_ROOT}api/v1/dutyDetails/merchant?email=${user?.email}`
+        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/dutyDetails/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
