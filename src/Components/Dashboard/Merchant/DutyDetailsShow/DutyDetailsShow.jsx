@@ -27,7 +27,7 @@ const DutyDetailsShow = () => {
   // console.log(products)
 
   const handleDelete = (id) => {
-    fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/${id}`, {
+    fetch(`${process.env.REACT_APP_ROOT}api/v1/dutyDetails/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
