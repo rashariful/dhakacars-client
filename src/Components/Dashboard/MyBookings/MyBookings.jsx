@@ -16,7 +16,7 @@ const MyBookings = () => {
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_ROOT}/api/v1/booking/merchant?email=${user?.email}`
+        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
@@ -24,7 +24,7 @@ const MyBookings = () => {
   });
   console.log(bookings);
   const handleDelete = (id) => {
-    fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`, {
+    fetch(`https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -37,7 +37,7 @@ const MyBookings = () => {
 
   const handleUpdate = (id) => {
     console.log(id);
-    fetch(`${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`, {
+    fetch(`https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
