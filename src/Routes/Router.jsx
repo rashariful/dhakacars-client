@@ -18,6 +18,7 @@ import PrivacyPolicy from "../Components/Pages/Home/LegalInfo/PrivacyPolicy";
 import TermsOfService from "../Components/Pages/Home/LegalInfo/TermsOfService";
 import Contact from "../Components/Pages/Home/Contact/Contact";
 import BookingUpdate from "../Components/Dashboard/MyBookings/BookingUpdate";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/booking",
-        element: <UserBooking />,
+        element: <PrivateRoute><UserBooking /></PrivateRoute>,
       },
       {
         path: "/privacy-policy",
@@ -79,7 +80,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <DashboardHome></DashboardHome>,
+        element: <PrivateRoute><DashboardHome/></PrivateRoute> ,
       },
       {
         path: "/dashboard/add-details",
