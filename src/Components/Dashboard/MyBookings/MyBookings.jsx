@@ -39,6 +39,7 @@ const MyBookings = () => {
       return data.data;
     },
   });
+  
   console.log(bookings);
   const handleDelete = (id) => {
     fetch(
