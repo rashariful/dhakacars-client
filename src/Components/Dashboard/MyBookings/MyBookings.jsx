@@ -3,16 +3,16 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../../Context/UserContext";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  MdDelete,
-  MdDeleteForever,
   MdDriveFileRenameOutline,
 } from "react-icons/md";
+import {
+  RiDeleteBin6Line
+} from "react-icons/ri";
 
 const MyBookings = () => {
   const [status, setStatus] = useState("");
-  console.log("Booking status 15", status);
   const { user } = useContext(AuthContext);
 
   const handleStatusUpdate = async (id, status) => {
@@ -21,7 +21,6 @@ const MyBookings = () => {
         `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}/status`,{status}
       );
       const updatedBooking = response.data;
-      console.log(updatedBooking, "24");
       setStatus(updatedBooking.status);
       refetch();
     } catch (error) {
@@ -39,8 +38,7 @@ const MyBookings = () => {
       return data.data;
     },
   });
-  
-  console.log(bookings);
+
   const handleDelete = (id) => {
     fetch(
       `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`,
@@ -142,7 +140,7 @@ const MyBookings = () => {
                   >
                     <button className="btn gap-2 btn-sm bg-rose-600 border-none hover:bg-rose-700">
                       {" "}
-                      <MdDelete color="white" size={24} /> Delete item{" "}
+                      <RiDeleteBin6Line color="white" size={24} /> Delete item{" "}
                     </button>
                   </td>
                 </tr>
