@@ -11,7 +11,7 @@ const useAdmin = (user) => {
     if (email) {
       axios
      
-        .get(`http://localhost:5000/api/v1/user/admin/${email}`, {
+        .get(`https://dhaka-cars-server-3othdj4dj-rashariful.vercel.app/api/v1/user/admin/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
