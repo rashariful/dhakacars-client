@@ -42,35 +42,16 @@ const Register = () => {
           icon: "success",
           button: "ok",
         });
+
+        
       });
      
     // localStorage.setItem("token", data?.data?.token);
 
     console.log(register);
+ 
 
-
-    // registerUser(email, password)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     setUser(user);
-    //     window.location.reload();
-    //     console.log(user);
-    //     swal({
-    //       title: "Registration Successful!",
-    //       icon: "success",
-    //       button: "ok",
-    //     });
-    //     setError("");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     setError(error.message);
-    //     swal({
-    //       title: error,
-    //       icon: "warning",
-    //       button: "ok",
-    //     });
-    //   });
+    
   
   };
 

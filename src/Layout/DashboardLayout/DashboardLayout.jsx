@@ -12,12 +12,12 @@ import Header from "../../Components/Pages/Header/Header";
 import { AuthContext } from "../../Context/UserContext";
 import useAdmin from "../../hook/useAdmin";
 import useBuyer from "../../hook/useBuyer";
-import useSeller from "../../hook/useSeller";
+import useMerchant from "../../hook/useMerchant";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [admin] = useAdmin(user);
-  const [seller] = useSeller(user);
+  const [merchant] = useMerchant(user);
   const [buyer] = useBuyer(user);
 
   return (
@@ -88,7 +88,24 @@ const DashboardLayout = () => {
               </>
             )}
 
-            {seller && (
+            {merchant && (
+              <div>
+                <li className="hover:bg-primary rounded-md hover:text-gray-200">
+                  <Link to="/dashboard/addproducts">
+                    <FaCartPlus className="w-6 h-6 text-gray-500"></FaCartPlus>
+                    <span className="ml-3">Add Product</span>
+                  </Link>
+                </li>
+
+                <li className="hover:bg-primary rounded-md hover:text-gray-200">
+                  <Link to="/dashboard/myproducts">
+                    <FaBoxOpen className="w-6 h-6 text-gray-500"></FaBoxOpen>
+                    <span className="ml-3">My Products</span>
+                  </Link>
+                </li>
+              </div>
+            )}
+            {buyer && (
               <div>
                 <li className="hover:bg-primary rounded-md hover:text-gray-200">
                   <Link to="/dashboard/addproducts">

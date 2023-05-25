@@ -19,38 +19,41 @@ const Login = () => {
   } = useContext(AuthContext);
 
   console.log(`Google user`, user);
+
   // 01 Login is user with email and password
-  const handleLoginSubmit = (event) => {
+  const handleLoginSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
 
+    const email = form.email.value;
+    const password = form.password.value;
     const login = {
       email: form.email.value,
       password: form.password.value,
     };
 
     // form.reset();
-
-    fetch(`${process.env.REACT_APP_ROOT}/api/v1/user/login`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(login),
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      localStorage.setItem("token", data?.data?.token);
-      console.log(login, data, "line 45 now updated")
-        swal({
-          title: "Login Successful!",
-          icon: "success",
-          button: "ok",
-        });
+    try {
+      await signInUser(email, password);
+      const response = await fetch(`https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/user/login`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(login),
       });
-
-    // localStorage.setItem("token", data?.data?.token);
+      const data = await response.json();
+      localStorage.setItem("token", data?.data?.token);
+      console.log(login, data, "line 45 now updated");
+      swal({
+        title: "Login Successful!",
+        icon: "success",
+        button: "ok",
+      });
+    } catch (error) {
+      console.error("Error occurred during login:", error);
+    }
 
     console.log(login);
 
@@ -63,7 +66,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         saveUserInfo(user.displayName, user.email, user.role);
-        
+
         swal({
           title: "Login Successful!",
           icon: "success",
@@ -123,15 +126,13 @@ const Login = () => {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`,
-
       },
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
-      localStorage.setItem("token", data?.data?.token);
-      console.log(data)
-
+        localStorage.setItem("token", data?.data?.token);
+        console.log(data);
       });
   };
 

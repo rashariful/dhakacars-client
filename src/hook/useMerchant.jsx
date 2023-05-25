@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useAdmin = (user) => {
-  const [admin, setAdmin] = useState(false);
-  console.log(admin, "use admin line 6")
+const useMerchant = (user) => {
+  const [merchant, setMerchant] = useState(false);
+  console.log(merchant, "use merchant line 6")
 
   useEffect(() => {
     const email = user?.email;
@@ -11,16 +11,16 @@ const useAdmin = (user) => {
     if (email) {
       axios
      
-        .get(`http://localhost:5000/api/v1/user/admin/${email}`, {
+        .get(`http://localhost:5000/api/v1/user/merchant/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
         .then((res) => {
-          setAdmin(res?.data?.isAdmin);
+            setMerchant(res?.data?.setMerchant);
         });
     }
   }, [user]);
-  return [admin];
+  return [merchant];
 };
-export default useAdmin;
+export default useMerchant;

@@ -94,7 +94,25 @@ const MyBookings = () => {
                   <td>{booking?.PickUpLocation}</td>
                   <td>{booking?.carType}</td>
                   <td>
-                  <button className="btn btn-sm">{booking?.status}</button>
+                   { console.log(booking.status)}
+                   {
+                    booking?.status !== "confirmed" ? 
+                    (<button  
+                      className="btn btn-sm btn-warning"
+                      onClick={() =>
+                        handleStatusUpdate(booking._id, "confirmed")
+                      }
+                      
+                      >Cancel</button>) 
+                    : (<button 
+                       className="btn btn-sm btn-success"
+                       onClick={() =>
+                        handleStatusUpdate(booking._id, "cancelled")
+                      }
+                       
+                       > Confirm</button>)
+                   }
+                  {/* <button  className="btn btn-sm btn-success ">{booking?.status}</button> */}
                     </td>
                   <td>
                     <button
@@ -108,7 +126,7 @@ const MyBookings = () => {
                   </td>
                   <td>
                     <button
-                      className="btn btn-secondary btn-sm"
+                      className="btn btn-warning btn-sm"
                       onClick={() =>
                         handleStatusUpdate(booking._id, "cancelled")
                       }

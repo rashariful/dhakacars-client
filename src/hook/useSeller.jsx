@@ -9,7 +9,7 @@ const useSeller = (user) => {
 
     if (email) {
       axios
-        .get(`https://server-nine-beta.vercel.app/user/seller/${email}`, {
+        .get(`http://localhost:5000/api/v1/user/seller/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
