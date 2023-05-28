@@ -9,7 +9,7 @@ import WhyChooseUs from '../WhyUs/WhyUs';
 const Home = () => {
     return (
         <div>
-           <section className='mt-10'> <Banner/> </section>
+           <section className='mt-20'> <Banner/> </section>
            <section className='mt-10'> <WhyChooseUs/> </section>
            <section className='mt-10'> <Faq/> </section>
           

@@ -5,7 +5,7 @@ import {FaPhoneAlt,FaEnvelope,FaEnvelopeOpenText,FaMapMarkedAlt} from 'react-ico
 
 const Contact = () => {
   return (
-    <div className='contact-sec'>
+    <div className='contact-sec -z-50'>
         <div className='contact-bg'>
             <div className='contact-con'>
 

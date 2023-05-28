@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 import logo from "../../../assets/images/Logo_Dhakacars.svg"
 
 const Header = () => {
+  const [isNavbarVisible, setNavbarVisible] = useState(true);
+
   const { user, logoutUser } = useContext(AuthContext);
   const menuItems = (
     <React.Fragment>
@@ -28,8 +30,34 @@ const Header = () => {
     </React.Fragment>
   );
 
+
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
+
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+
+      setNavbarVisible(!isScrollingDown);
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbar flex justify-between bg-white sticky top-0 left-0 right-0 z-50 shadow-md  rounded-md max-w-screen-2xl mx-auto">
+    <nav
+    className={`w-full z-50 transition-all duration-300 ease-in-out ${
+      isNavbarVisible ? "fixed top-8 transform translateY(0) bg-white drop-shadow-sm" : "-translate-y-full bg-gray-50 shadow-md fixed top-16"
+    }`}
+    
+    >
+
+      <div className="navbar flex justify-between rounded-md max-w-screen-2xl mx-auto">
       <div className="navbar-start z-30">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -144,6 +172,7 @@ const Header = () => {
         </svg>
       </label>
     </div>
+    </nav>
   );
 };
 
