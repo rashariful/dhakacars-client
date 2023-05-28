@@ -5,13 +5,16 @@ const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   console.log(admin, "use admin line 6")
 
+
   useEffect(() => {
     const email = user?.email;
+    // console.log(email, "For admin")
+
 
     if (email) {
       axios
      
-        .get(`https://dhaka-cars-server-3othdj4dj-rashariful.vercel.app/api/v1/user/admin/${email}`, {
+        .get(`http://localhost:5000/api/v1/user/admin/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

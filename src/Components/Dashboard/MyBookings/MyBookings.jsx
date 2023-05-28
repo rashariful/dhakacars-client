@@ -35,10 +35,11 @@ const MyBookings = () => {
         `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/merchant?email=${user?.email}`
       );
       const data = await res.json();
-      return data.data;
+      return data?.data;
     },
   });
 
+  console.log(bookings, "Booking Lenght is", bookings.lenght, "line 42")
   const handleDelete = (id) => {
     fetch(
       `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`,
@@ -90,7 +91,7 @@ const MyBookings = () => {
                 <tr key={booking._id}>
                   <th>{i + 1}</th>
                   <td>{booking?.userName}</td>
-                  <td>{booking?.pickupDateTime}</td>
+                  <td>{booking?.pickupDateTime}</td> 
                   <td>{booking?.PickUpLocation}</td>
                   <td>{booking?.carType}</td>
                   <td>
