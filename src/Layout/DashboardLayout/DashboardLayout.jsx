@@ -1,27 +1,28 @@
 import React, { useContext } from "react";
 import {
-  FaBox,
-  FaBoxOpen,
   FaCalendarAlt,
+  FaCar,
+  FaCarCrash,
   FaCartPlus,
   FaHome,
-  FaShoppingCart,
   FaUserAlt,
   FaUserCircle,
+  Facar,
 } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import Header from "../../Components/Pages/Header/Header";
-import { AuthContext } from "../../Context/UserContext";
 import useAdmin from "../../hook/useAdmin";
 import useBuyer from "../../hook/useBuyer";
 import useMerchant from "../../hook/useMerchant";
+import { AuthContext } from "../../Context/UserContext";
+import { MdLogout, MdNotifications, MdSettings } from "react-icons/md";
 
 const DashboardLayout = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
   const [admin] = useAdmin(user);
   const [merchant] = useMerchant(user);
   const [buyer] = useBuyer(user);
-  console.log(buyer,merchant,admin, "dashboar layout info")
+  console.log(buyer, merchant, admin, "dashboar layout info");
 
   return (
     <div>
@@ -39,16 +40,21 @@ const DashboardLayout = () => {
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
 
           <ul className="menu p-4 w-80 bg-slate-800  shadow-2xl rounded-t-md text-base text-slate-300 capitalize font-semibold">
-            {user.photoURL ?
-            <img
-            src={user?.photoURL}
-            className="w-20 h-20 rounded-full mx-auto border-2 border-slate-300 shadow-lg"
-            alt=""
-          /> :
-          <img src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" className="w-20 h-20 rounded-full mx-auto border-2 border-slate-300 shadow-lg" alt="" /> 
-           }
+            {user.photoURL ? (
+              <img
+                src={user?.photoURL}
+                className="w-20 h-20 rounded-full mx-auto border-2 border-slate-300 shadow-lg"
+                alt=""
+              />
+            ) : (
+              <img
+                src="https://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg"
+                className="w-20 h-20 rounded-full mx-auto border-2 border-slate-300 shadow-lg"
+                alt=""
+              />
+            )}
             <h3 className="text-center text-lg font-bold my-3">
-              {user?.displayName ? user?.displayName : "User Name here"} 
+              {user?.displayName ? user?.displayName : "User Name here"}
             </h3>
             <li className="hover:bg-slate-700 rounded-md">
               <Link to="/dashboard">
@@ -56,20 +62,15 @@ const DashboardLayout = () => {
                 <span className="ml-3">My Dashboard</span>
               </Link>
             </li>
-            {buyer &&(
+            {buyer && (
               <>
-              <li className="hover:bg-slate-700 rounded-md">
-                <Link to="/dashboard/my-bookings">
-                  <FaCalendarAlt className="w-6 h-6 text-slate-500"></FaCalendarAlt>
-                  <span className="ml-3">My Bookings</span>
-                </Link>
-              </li>
-              <li className="hover:bg-slate-700 rounded-md">
-                <Link to="/dashboard/my-bookings">
-                  <FaCalendarAlt className="w-6 h-6 text-slate-500"></FaCalendarAlt>
-                  <span className="ml-3">coming soon</span>
-                </Link>
-              </li>
+                <li className="hover:bg-slate-700 rounded-md">
+                  <Link to="/dashboard/my-bookings">
+                    <FaCar className="w-6 h-6 text-slate-500"></FaCar>
+                    <span className="ml-3">My Bookings</span>
+                  </Link>
+                </li>
+                
               </>
             )}
 
@@ -83,7 +84,7 @@ const DashboardLayout = () => {
                 </li>
                 <li className="hover:bg-slate-700 rounded-md">
                   <Link to="/dashboard/show-details">
-                    <FaUserCircle className="w-6 h-6 text-slate-400"></FaUserCircle>
+                    <FaCar className="w-6 h-6 text-slate-400"></FaCar>
                     <span className="ml-3">Duty Details</span>
                   </Link>
                 </li>
@@ -101,12 +102,34 @@ const DashboardLayout = () => {
 
                 <li className="hover:bg-slate-700 rounded-md">
                   <Link to="/dashboard/show-details">
-                    <FaUserCircle className="w-6 h-6 text-slate-400"></FaUserCircle>
+                    <FaCar className="w-6 h-6 text-slate-400"></FaCar>
                     <span className="ml-3">Duty Details</span>
                   </Link>
                 </li>
               </div>
             )}
+            <div className="divide-y border-b border-slate-500 my-10 w-64 mx-auto">
+            
+            </div>
+            
+            <li  className="hover:bg-slate-700 rounded-md">
+              <button>
+                <MdNotifications className="w-6 h-6 text-slate-400"></MdNotifications>
+                <span className="ml-3">Notification</span>
+              </button>
+            </li>
+            <li className="hover:bg-slate-700 rounded-md">
+              <button>
+                <MdSettings className="w-6 h-6 text-slate-400"></MdSettings>
+                <span className="ml-3">Settings</span>
+              </button>
+            </li>
+            <li onClick={logoutUser} className="hover:bg-slate-700 rounded-md">
+              <button>
+                <MdLogout className="w-6 h-6 text-slate-400"></MdLogout>
+                <span className="ml-3">Logout</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
