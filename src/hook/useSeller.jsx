@@ -9,7 +9,7 @@ const useSeller = (user) => {
 
     if (email) {
       axios
-        .get(`http://localhost:5000/api/v1/user/seller/${email}`, {
+        .get(`${process.env.REACT_APP_ROOT}/api/v1/user/seller/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

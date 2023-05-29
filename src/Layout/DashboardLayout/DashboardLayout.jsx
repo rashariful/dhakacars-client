@@ -56,7 +56,7 @@ const DashboardLayout = () => {
                 <span className="ml-3">My Dashboard</span>
               </Link>
             </li>
-            {buyer && (
+            {buyer &&(
               <>
               <li className="hover:bg-slate-700 rounded-md">
                 <Link to="/dashboard/my-bookings">

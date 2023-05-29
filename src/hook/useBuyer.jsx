@@ -12,7 +12,7 @@ const useBuyer = (user) => {
 
     if (email) {
       axios
-        .get(`http://localhost:5000/api/v1/user/buyer/${email}`, {
+        .get(`${process.env.REACT_APP_ROOT}/api/v1/user/buyer/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

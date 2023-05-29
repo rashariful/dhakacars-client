@@ -36,7 +36,7 @@ const AddDutyDetails = () => {
       dinner: data.dinner,
     };
 
-    fetch(`https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/dutyDetails`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

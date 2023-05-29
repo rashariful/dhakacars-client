@@ -18,7 +18,7 @@ const DutyDetailsShow = () => {
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/dutyDetails/merchant?email=${user?.email}`
+        `${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data.data;
@@ -27,7 +27,7 @@ const DutyDetailsShow = () => {
   // console.log(products)
 
   const handleDelete = (id) => {
-    fetch(`https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/dutyDetails/${id}`, {
+    fetch(`${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

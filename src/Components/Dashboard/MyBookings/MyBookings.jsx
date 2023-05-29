@@ -18,7 +18,7 @@ const MyBookings = () => {
   const handleStatusUpdate = async (id, status) => {
     try {
       const response = await axios.put(
-        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}/status`,{status}
+        `${process.env.REACT_APP_ROOT}/api/v1/booking/${id}/status`,{status}
       );
       const updatedBooking = response.data;
       setStatus(updatedBooking.status);
@@ -32,17 +32,16 @@ const MyBookings = () => {
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/merchant?email=${user?.email}`
+        `${process.env.REACT_APP_ROOT}/api/v1/booking/merchant?email=${user?.email}`
       );
       const data = await res.json();
       return data?.data;
     },
   });
 
-  console.log(bookings, "Booking Lenght is", bookings.lenght, "line 42")
   const handleDelete = (id) => {
     fetch(
-      `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`,
+      `${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`,
       {
         method: "DELETE",
       }
@@ -57,7 +56,7 @@ const MyBookings = () => {
   const handleUpdate = (id) => {
     console.log(id);
     fetch(
-      `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/${id}`,
+      `${process.env.REACT_APP_ROOT}/api/v1/booking/${id}`,
       {
         method: "PATCH",
       }

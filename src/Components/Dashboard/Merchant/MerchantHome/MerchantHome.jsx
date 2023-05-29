@@ -6,7 +6,7 @@ const MerchantHome = () => {
     return (
         <div className="w-[80%] mx-auto min-h-screen mt-10">
         <h2 className="text-2xl font-bold capitalize text-center text-slate-600 mb-10">
-          Admin dashboard
+          Merchant dashboard
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
           <div className="border py-5 px-10 flex flex-col items-center bg-white rounded-lg shadow-md hover:skal-75 ">

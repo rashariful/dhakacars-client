@@ -16,8 +16,8 @@ const DashboardHome = () => {
   return (
     <div>
       {admin && <AdminDashboard />}
-      {merchant && <MerchantHome/>}
-      {buyer && <Buyerdashboard/> }
+      {merchant && <MerchantHome />}
+      {buyer && <Buyerdashboard />}
     </div>
   );
 };

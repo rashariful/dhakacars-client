@@ -5,18 +5,17 @@ import { AuthContext } from "../../../Context/UserContext";
 import { useQueryClient } from "@tanstack/react-query";
 
 const Buyerdashboard = () => {
-    const [Booking, setbooking] = useState([])
   const { user } = useContext(AuthContext);
-  console.log(Booking, "line 10 from Book page")
+  const [Booking, setbooking] = useState([]);
 
   const { data: bookings = [], refetch } = useQueryClient({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://dhaka-cars-server-git-main-rashariful.vercel.app/api/v1/booking/merchant?email=${user?.email}`
+        `${process.env.REACT_APP_ROOT}/api/v1/booking/merchant?email=${user?.email}`
       );
       const data = await res.json();
-           setbooking(data)
+      setbooking(data);
     },
   });
 

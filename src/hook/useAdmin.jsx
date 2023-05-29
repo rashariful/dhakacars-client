@@ -14,7 +14,7 @@ const useAdmin = (user) => {
     if (email) {
       axios
      
-        .get(`http://localhost:5000/api/v1/user/admin/${email}`, {
+        .get(`${process.env.REACT_APP_ROOT}/api/v1/user/admin/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

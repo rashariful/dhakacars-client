@@ -11,13 +11,13 @@ const useMerchant = (user) => {
     if (email) {
       axios
      
-        .get(`http://localhost:5000/api/v1/user/merchant/${email}`, {
+        .get(`${process.env.REACT_APP_ROOT}/api/v1/user/merchant/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
         .then((res) => {
-            setMerchant(res?.data?.setMerchant);
+            setMerchant(res?.data?.isMerchant);
         });
     }
   }, [user]);
