@@ -5,6 +5,7 @@ import Contact from '../Contact/Contact';
 import Testimonials from '../Testimonials/Testimonials';
 import Faq from '../FAQ/FAQ';
 import WhyChooseUs from '../WhyUs/WhyUs';
+import Support from '../Support/Support';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
            <section className='mt-20'> <Banner/> </section>
            <section className='mt-10'> <WhyChooseUs/> </section>
            <section className='mt-10'> <Faq/> </section>
+           <section className='mt-10'> <Support/> </section>
           
             {/* <Counter></Counter> */}
             

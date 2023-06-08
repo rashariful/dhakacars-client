@@ -6,22 +6,91 @@ import { MdDeleteForever } from "react-icons/md";
 import { AuthContext } from "../../../../Context/UserContext";
 
 const DutyDetailsShow = () => {
-  const { user } = useContext(AuthContext);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [products, setProducts] = useState([]);
+  console.log(products);
   const [showModal, setShowModal] = useState(false);
-
+  const { user } = useContext(AuthContext);
   const handleClose = () => {
     setShowModal(false);
   };
 
-  const { data: products = [], refetch } = useQuery({
+  products.map((p) => {
+    const lunch = p.lunch;
+    const dinner = p.dinner;
+    const overTime = p.overTime;
+ 
+  
+    // console.log(cngCost)
+    const calculateTotalCost = (cngCost, tollParking) => {
+
+      const totalCngCost = cngCost;
+      const totalTollCost = tollParking;
+  
+      const totalCost = totalCngCost + totalTollCost ;
+      console.log(totalCost, "line 31")
+
+    
+    };
+
+    const cngCost = p.cngCost;
+    const tollParking = p.tollParking;
+      const result = calculateTotalCost(cngCost,tollParking );
+    console.log("Total Cost:", result);
+
+
+
+  });
+
+
+
+
+
+
+
+  // const calculateTotalCost =(lunchCount, dinnerCount, overtimeHours, cngCost, tollCost, parkingCost)=> {
+  //   const lunchCost = 150;
+  //   const dinnerCost = 150;
+  //   const overtimeRate = 50;
+
+  //   const totalLunchCost = lunchCount * lunchCost;
+  //   const totalDinnerCost = dinnerCount * dinnerCost;
+  //   const totalOvertimeCost = overtimeHours * overtimeRate;
+
+  //   const totalCngCost = cngCost;
+  //   const totalTollCost = tollCost;
+  //   const totalParkingCost = parkingCost;
+
+  //   const totalCost =
+  //     totalLunchCost +
+  //     totalDinnerCost +
+  //     totalOvertimeCost +
+  //     totalCngCost +
+  //     totalTollCost +
+  //     totalParkingCost;
+
+  //   return totalCost;
+  // }
+
+  // // Example usage
+  // const lunchCount = 5;
+  // const dinnerCount = 10;
+  // const overtimeHours = 200;
+  // const cngCost = 1000;
+  // const tollCost = 10;
+  // const parkingCost = 50;
+
+  // const result = calculateTotalCost(lunchCount, dinnerCount, overtimeHours, cngCost, tollCost, parkingCost);
+  // console.log("Total Cost:", result);
+
+  const { data = [], refetch } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
         `${process.env.REACT_APP_ROOT}/api/v1/dutyDetails/merchant?email=${user?.email}`
       );
       const data = await res.json();
-      return data.data;
+      setProducts(data.data);
     },
   });
   // console.log(products)
