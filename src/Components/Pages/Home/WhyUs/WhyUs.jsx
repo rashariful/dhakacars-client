@@ -6,7 +6,7 @@ import {FaAngleRight} from 'react-icons/fa';
 
 const WhyChooseUs = () => {
   return (
-    <div className='chooseUs-section'>
+    <div className='chooseUs-section py-32'>
         <div className='wcu-container'>
         <div className='choose-us-image'>
             {/* <img src={lg}/> */}
